@@ -1,14 +1,16 @@
 import {Locator, Page, expect} from '@playwright/test';
+import {BasePage} from './basepage';
 
-export class Homepage {
+export class Homepage extends BasePage{
     mainTitle: Locator;
 
     constructor(page: Page) {
-        this.mainTitle = page.locator('div').nth(3)
+        super(page);
+        this.mainTitle = page.getByRole('heading', { name: 'AutomationExercise' })
     }
 
     async verifyHomePage(): Promise<void> {
         await this.mainTitle.isVisible();
-        await expect(this.mainTitle).toHaveText('Automation Exercise');
+        await expect(this.mainTitle).toHaveText('AutomationExercise');
     }   
 }

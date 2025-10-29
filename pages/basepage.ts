@@ -18,7 +18,7 @@ export class BasePage {
         this.signupLoginLink = page.getByRole('link', { name: ' Signup / Login' })
         this.contactUsLink = page.getByRole('link', { name: ' Contact us' })
         this.topNavigationBar = page.locator('ul[class="nav navbar-nav"] li')
-        this.loggedAsUserLabel = page.getByRole('listitem').filter({ hasText: 'Logged in as Jane Doe' })
+        this.loggedAsUserLabel = page.getByRole('listitem').filter({ hasText: 'Logged in as' })
     }
 
     async clickOnTopNavigationBarLink(linkText: string) {

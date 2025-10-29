@@ -1,6 +1,6 @@
 import {Locator, Page} from "@playwright/test";
 
-export class accountCreatedPage {
+export class AccountCreatedPage {
     accountCreatedTitle: Locator;
     continueButton: Locator;
 

@@ -1,6 +1,6 @@
 import {Locator, Page, expect} from "@playwright/test";
 
-export class enterAccountInformationPage {
+export class EnterAccountInformationPage {
     accountInformationTitle: Locator;
     titleMrRadioButton: Locator;
     titleMrsRadioButton: Locator;
@@ -32,7 +32,7 @@ export class enterAccountInformationPage {
         this.countryDropdown = page.locator('select[id="country"]')
         this.stateField = page.getByRole('textbox', { name: 'State *' })
         this.cityField = page.getByRole('textbox', { name: 'City * Zipcode *' })
-        this.zipCodeField = page.getByRole('textbox', { name: 'Zipcode *' })
+        this.zipCodeField = page.locator('input[data-qa="zipcode"]')
         this.mobileNumberField = page.getByRole('textbox', { name: 'Mobile Number *' })
         this.createAccountButton = page.getByRole('button', { name: 'Create Account' })
     }       
@@ -68,8 +68,6 @@ export class enterAccountInformationPage {
         await this.cityField.fill(city);
         await this.zipCodeField.fill(zipCode);
         await this.mobileNumberField.fill(mobileNumber);
-    }   
-    async clickCreateAccountButton(): Promise<void> {
         await this.createAccountButton.click();
     }   
 }
