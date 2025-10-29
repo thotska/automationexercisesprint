@@ -1,4 +1,3 @@
-import { he } from "@faker-js/faker";
 
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');

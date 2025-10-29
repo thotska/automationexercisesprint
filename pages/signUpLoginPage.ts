@@ -5,6 +5,9 @@ export class SignupLoginPage {
     nameField: Locator;
     emailField: Locator;
     signupButton: Locator;
+    emailToLoginField: Locator;
+    passwordToLoginField: Locator
+    logInButton: Locator;
 
 
     constructor(page: Page) {
@@ -12,6 +15,9 @@ export class SignupLoginPage {
         this.nameField = page.getByRole('textbox', { name: 'Name' })
         this.emailField = page.locator('form').filter({ hasText: 'Signup' }).getByPlaceholder('Email Address')
         this.signupButton = page.getByRole('button', { name: 'Signup' })
+        this.emailToLoginField = page.locator('form').filter({ hasText: 'Login' }).getByPlaceholder('Email Address')
+        this.passwordToLoginField = page.getByRole('textbox', { name: 'Password' })
+        this.logInButton = page.getByRole('button', { name: 'Login' })
     }
 
     async verifySignupLoginPage(): Promise<void> {
@@ -24,4 +30,10 @@ export class SignupLoginPage {
         await this.emailField.fill(email);
         await this.signupButton.click();
     }
+    async enterEmailAndPasswordToLogin(email: string, password: string): Promise<void> {
+        await this.emailToLoginField.fill(email);
+        await this.passwordToLoginField.fill(password);
+        await this.logInButton.click();
+    }
+
 }
