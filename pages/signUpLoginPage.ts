@@ -9,6 +9,7 @@ export class SignupLoginPage extends BasePage {
     emailToLoginField: Locator;
     passwordToLoginField: Locator
     logInButton: Locator;
+    emailOrPasswordIncorrectMessage: Locator;
 
 
     constructor(page: Page) {
@@ -20,6 +21,7 @@ export class SignupLoginPage extends BasePage {
         this.emailToLoginField = page.locator('form').filter({ hasText: 'Login' }).getByPlaceholder('Email Address')
         this.passwordToLoginField = page.getByRole('textbox', { name: 'Password' })
         this.logInButton = page.getByRole('button', { name: 'Login' })
+        this.emailOrPasswordIncorrectMessage = page.getByText('Your email or password is incorrect!')
     }
 
     async verifySignupLoginPage(): Promise<void> {
@@ -37,5 +39,7 @@ export class SignupLoginPage extends BasePage {
         await this.passwordToLoginField.fill(password);
         await this.logInButton.click();
     }
-
+    async verifyIncorrectEmailOrPasswordMessage(): Promise<void> {
+        await this.emailOrPasswordIncorrectMessage.isVisible();
+    }
 }
