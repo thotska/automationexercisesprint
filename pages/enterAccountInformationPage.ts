@@ -1,6 +1,7 @@
 import {Locator, Page, expect} from "@playwright/test";
+import { BasePage } from "./basepage";
 
-export class EnterAccountInformationPage {
+export class EnterAccountInformationPage extends BasePage {
     accountInformationTitle: Locator;
     titleMrRadioButton: Locator;
     titleMrsRadioButton: Locator;
@@ -19,6 +20,7 @@ export class EnterAccountInformationPage {
     createAccountButton: Locator;
 
     constructor(page: Page) {
+        super(page);
         this.accountInformationTitle = page.getByRole('heading', { name: 'Enter Account Information' })
         this.titleMrRadioButton = page.getByRole('radio', { name: 'Mr.' })
         this.titleMrsRadioButton = page.getByRole('radio', { name: 'Mrs.' })
