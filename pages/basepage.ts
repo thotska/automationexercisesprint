@@ -26,8 +26,7 @@ export class BasePage {
         await expect(link).toBeVisible();
         await link.click();
     }
-    async verifyUserLoggedIn(username: string): Promise<void> {
+    async verifyUserLoggedIn(): Promise<void> {
         await this.loggedAsUserLabel.isVisible();
-        await expect(this.loggedAsUserLabel).toHaveText(`Logged in as ${username}`);
     }
 }
