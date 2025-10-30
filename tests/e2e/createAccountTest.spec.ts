@@ -37,7 +37,7 @@ test.describe("Create Account Test ", () => {
         await enterAccountInformation.fillAccountInformationForm(process.env.userPassword!, fakerDay, fakerMonth, fakerYear.toString(), fakerName, fakerLastName, fakerStreetAddress, fakerCountry, fakerState, fakerCity, fakerZipCode, fakerPhoneNumber);
         await accountCreated.verifyAccountCreatedPage();
         await accountCreated.clickContinueButton();
-        await basePage.verifyUserLoggedIn(fakerName);
+        await basePage.verifyUserLoggedIn();
     }
     )
 });

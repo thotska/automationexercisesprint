@@ -1,6 +1,7 @@
 import {Locator, Page, expect} from '@playwright/test';
+import { BasePage } from './basepage';
 
-export class SignupLoginPage {
+export class SignupLoginPage extends BasePage {
     newUserSignup: Locator;
     nameField: Locator;
     emailField: Locator;
@@ -11,6 +12,7 @@ export class SignupLoginPage {
 
 
     constructor(page: Page) {
+        super(page);
         this.newUserSignup = page.getByRole('heading', { name: 'New User Signup!' })
         this.nameField = page.getByRole('textbox', { name: 'Name' })
         this.emailField = page.locator('form').filter({ hasText: 'Signup' }).getByPlaceholder('Email Address')
