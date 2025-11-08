@@ -7,8 +7,8 @@ test.describe('Post to All Products List', () => {
     test.beforeAll(async () => {
         apiContext = await request.newContext();
     }); 
-    test('should return 405 Method Not Allowed for POST request', async () => {
-        const response = await apiContext.post('/api/productsList', {
+    test('should return 405 Method Not Allowed for POST request', async ({request}) => {
+        const response = await request.post('/api/productsList', {
             data: { name: 'Test Product', price: '100' }
         });
 
