@@ -25,7 +25,7 @@ module.exports = defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    headless: false,
+    headless: process.env.CI ? true : false,
     
     /* Increase timeouts for better stability */
     actionTimeout: 30000, // 30 seconds for each action
