@@ -8,7 +8,7 @@ test.describe('Post Without Email API', () => {
 
 
   test('should return a success response when user exists', async ({request}) => {
-    const response = await request.post('api/verifyLogin', {
+    const response = await request.post('/api/verifyLogin', {
       form: {password: process.env.userPassword! }
     });
     const responseBody = await response.json();
