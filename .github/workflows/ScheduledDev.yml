@@ -28,7 +28,7 @@ jobs:
           userEmail: ${{ secrets.userEmail }}
           userPassword: ${{ secrets.userPassword }}
           userName: ${{ secrets.userName }}
-        run: npx playwright test tests/e2e/ --reporter=html
+        run: npx playwright test 
       
       - name: Upload test results
         if: always()
