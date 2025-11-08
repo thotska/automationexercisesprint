@@ -1,11 +1,16 @@
-import { test, expect, request } from '@playwright/test';
+import { test, expect, request, APIRequestContext } from '@playwright/test';
 import z, { array } from 'zod';
 import {getAllProductsListSchema} from '../../schemas/getAllProductsList';
 
 test.describe('Get All Products API', () => {
+  let apiContext: APIRequestContext;
 
-  test('should return a list of products', async ({ request }) => {
-    const response = await request.get('/api/productsList');
+  test.beforeAll(async () => {
+    apiContext = await request.newContext();
+  });
+
+  test('should return a list of products', async () => {
+    const response = await apiContext.get('/api/productsList');
     expect(response.status()).toBe(200);
 
     const responseBody = await response.json();
