@@ -11,15 +11,12 @@ test.describe('Post Search Product API', () => {
     });
     test('should return products matching the search criteria', async () => {
       
-      const testResponse = await apiContext.get('/api/productsList');
-      console.log('Test GET response status:', testResponse.status());
-      
       const requestBody = {
         search_product: "Shirt"
       };
 
       const response = await apiContext.post('/api/searchProduct', {
-        data: requestBody
+        form: requestBody
       });
         expect(response.status()).toBe(200);
       const responseBody = await response.json()
